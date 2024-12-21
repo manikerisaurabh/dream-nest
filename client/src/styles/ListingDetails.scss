@@ -1,0 +1,212 @@
+@import "./Variables.scss";
+@import "./breakpoints.scss";
+
+.listing-details {
+  padding: 40px 130px 120px;
+
+  @include xl {
+    padding: 40px 80px 120px;
+  }
+
+  @include lg {
+    padding: 40px 50px 120px;
+  }
+
+  @include sm {
+    padding: 40px 20px 120px;
+  }
+
+  .title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include sm {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 15px;
+    }
+
+    h1 {
+      @include sm {
+        font-size: 26px;
+      }
+    }
+
+    .save {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+
+      p {
+        font-size: 20px;
+        font-weight: 700;
+        margin: 0;
+      }
+    }
+  }
+
+  .photos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px 0;
+
+    img {
+      max-width: 280px;
+    }
+  }
+
+  hr {
+    margin: 20px 0;
+  }
+
+  .profile {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+
+    img {
+      width: 60px;
+      height: 60px;
+      margin: 0;
+    }
+  }
+
+  p {
+    max-width: 800px;
+    margin-top: 20px;
+  }
+
+  .booking {
+    display: flex;
+    justify-content: space-between;
+
+    @include lg {
+      flex-direction: column;
+      gap: 50px;
+    }
+
+    .amenities {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-column-gap: 100px;
+      margin: 30px 0;
+      max-width: 700px;
+
+      @include sm {
+        grid-column-gap: 20px;
+      }
+
+      .facility {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 20px;
+
+        &_icon {
+          font-size: 30px;
+        }
+
+        p {
+          margin: 0;
+        }
+      }
+    }
+
+    .date-range-calendar {
+      margin: 30px 0;
+    
+      h2 {
+        margin-bottom: 10px;
+      }
+    
+      .button {
+        @include buttonStyle;
+        width: 100%;
+        margin-top: 30px;
+    
+        @include lg {
+          max-width: 300px;
+        }
+      }
+    
+      // Styles for the calendar
+      .react-calendar {
+        background-color: #f9f9f9; // Light background
+        border: 1px solid #ddd; // Subtle border
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        font-family: 'Arial', sans-serif;
+        margin-bottom: 20px;
+      }
+    
+      .react-calendar__tile {
+        font-size: 14px;
+        text-align: center;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    
+        &:hover {
+          background-color: #e6f7ff; // Highlight on hover
+          color: #0056b3;
+        }
+      }
+    
+      .react-calendar__tile--active {
+        background-color: #007bff; // Active tile color
+        color: #fff;
+        font-weight: bold;
+      }
+    
+      .react-calendar__navigation {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    
+        button {
+          color: #007bff;
+          background: none;
+          border: none;
+          font-size: 16px;
+          cursor: pointer;
+    
+          &:hover {
+            color: #0056b3;
+          }
+        }
+      }
+    
+      .react-calendar__month-view__weekdays {
+        text-align: center;
+        font-weight: bold;
+        color: #555;
+        margin-bottom: 10px;
+      }
+    
+      // Row layout for screen sizes between 740px and 1000px
+      @media (min-width: 740px) and (max-width: 1000px) {
+        display: flex;
+        align-items: flex-start;
+        gap: 120px;
+    
+        .react-calendar {
+          flex: 1; // Allow calendar to take up available space
+        }
+    
+        .details { // Add a wrapper around the below elements
+          flex: 2; // Allocate more space for the text and buttons
+          display: flex;
+          flex-direction: column;
+          gap: 30px;
+        }
+      }
+    }
+  }
+}
