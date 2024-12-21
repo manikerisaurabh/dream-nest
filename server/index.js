@@ -12,7 +12,7 @@ const userRoutes = require("./routes/user.js");
 const app = express();
 
 // Middleware
-const cors = require("cors");
+
 app.use(cors({ origin: "http://localhost:3000" })); // Replace with your client URL
 
 app.use(express.json());
