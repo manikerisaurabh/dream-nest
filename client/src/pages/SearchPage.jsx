@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import "../styles/List.scss"
-import { useSelector,useDispatch  } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { setListings } from "../redux/state";
 import { useEffect, useState } from "react";
 import Loader from "../components/Loader"
@@ -17,7 +17,7 @@ const SearchPage = () => {
 
   const getSearchListings = async () => {
     try {
-      const response = await fetch(`http://localhost:3001/properties/search/${search}`, {
+      const response = await fetch(`/properties/search/${search}`, {
         method: "GET"
       })
 
@@ -32,7 +32,7 @@ const SearchPage = () => {
   useEffect(() => {
     getSearchListings()
   }, [search])
-  
+
   return loading ? <Loader /> : (
     <>
       <Navbar />
@@ -66,7 +66,7 @@ const SearchPage = () => {
           )
         )}
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 }

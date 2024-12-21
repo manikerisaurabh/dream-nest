@@ -18,7 +18,7 @@ const ListingDetails = () => {
   const getListingDetails = async () => {
     try {
       const response = await fetch(
-        `http://localhost:3001/properties/${listingId}`,
+        `/properties/${listingId}`,
         {
           method: "GET",
         }
@@ -77,7 +77,7 @@ const ListingDetails = () => {
         totalPrice: listing.price * dayCount,
       }
 
-      const response = await fetch("http://localhost:3001/bookings/create", {
+      const response = await fetch("/bookings/create", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -98,7 +98,7 @@ const ListingDetails = () => {
   ) : (
     <>
       <Navbar />
-      
+
       <div className="listing-details">
         <div className="title">
           <h1>{listing.title}</h1>
@@ -108,7 +108,7 @@ const ListingDetails = () => {
         <div className="photos">
           {listing.listingPhotoPaths?.map((item) => (
             <img
-              src={`http://localhost:3001/${item.replace("public", "")}`}
+              src={`/${item.replace("public", "")}`}
               alt="listing photo"
             />
           ))}
@@ -126,7 +126,7 @@ const ListingDetails = () => {
 
         <div className="profile">
           <img
-            src={`http://localhost:3001/${listing.creator.profileImagePath.replace(
+            src={`/${listing.creator.profileImagePath.replace(
               "public",
               ""
             )}`}
@@ -166,29 +166,29 @@ const ListingDetails = () => {
           <div>
             <h2>How long do you want to stay?</h2>
             <div className="date-range-calendar">
-            <Calendar
-              selectRange={true}
-              onChange={handleDateChange}
-              value={selectedDates}
-            />
-            <div className="details">
-              {dayCount > 1 ? (
-                <h2>
-                  ${listing.price} x {dayCount} nights
-                </h2>
-              ) : (
-                <h2>
-                  ${listing.price} x {dayCount} night
-                </h2>
-              )}
+              <Calendar
+                selectRange={true}
+                onChange={handleDateChange}
+                value={selectedDates}
+              />
+              <div className="details">
+                {dayCount > 1 ? (
+                  <h2>
+                    ${listing.price} x {dayCount} nights
+                  </h2>
+                ) : (
+                  <h2>
+                    ${listing.price} x {dayCount} night
+                  </h2>
+                )}
 
-              <h2>Total price: ${listing.price * dayCount}</h2>
-              <p>Start Date: {dateRange[0].startDate.toDateString()}</p>
-              <p>End Date: {dateRange[0].endDate.toDateString()}</p>
+                <h2>Total price: ${listing.price * dayCount}</h2>
+                <p>Start Date: {dateRange[0].startDate.toDateString()}</p>
+                <p>End Date: {dateRange[0].endDate.toDateString()}</p>
 
-              <button className="button" type="submit" onClick={handleSubmit}>
-                BOOKING
-              </button>
+                <button className="button" type="submit" onClick={handleSubmit}>
+                  BOOKING
+                </button>
               </div>
             </div>
           </div>
